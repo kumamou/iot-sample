@@ -34,25 +34,25 @@ public class MessageSendD2CSample {
      */
     public static void main(String[] args) throws URISyntaxException, IOException {
         //=====================向 IoT 中心发送设备到云消息的线程===================================
-        client = new DeviceClient(connString, protocol);
-        client.open();
-
-        MessageSender sender = new MessageSender();
-
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-        executor.execute(sender);
-
-
-        System.out.println("Press ENTER to exit.");
-        System.in.read();
-        executor.shutdownNow();
-        client.closeNow();
+//        client = new DeviceClient(connString, protocol);
+//        client.open();
+//
+//        MessageSender sender = new MessageSender();
+//
+//        ExecutorService executor = Executors.newFixedThreadPool(1);
+//        executor.execute(sender);
+//
+//
+//        System.out.println("Press ENTER to exit.");
+//        System.in.read();
+//        executor.shutdownNow();
+//        client.closeNow();
         //============================================================================================
         //==================模拟设备侦听云到设备的消息=================================================
-//        client = new DeviceClient(connString, protocol);
-//        MessageCallback callback = new AppMessageCallback();
-//        client.setMessageCallback(callback, null);
-//        client.open();
+        client = new DeviceClient(connString, protocol);
+        MessageCallback callback = new AppMessageCallback();
+        client.setMessageCallback(callback, null);
+        client.open();
         //==============================================================================================
     }
 
@@ -152,6 +152,10 @@ public class MessageSendD2CSample {
                 }
             }
         }
+    }
+
+    public void testOverride(){
+
     }
 
     /**

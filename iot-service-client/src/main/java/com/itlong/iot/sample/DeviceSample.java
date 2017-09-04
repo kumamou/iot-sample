@@ -24,14 +24,14 @@ public class DeviceSample {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        System.out.println("Starting sample...");
-        SslUtils.ignoreSsl();
-        System.out.println("Add Device started");
-        DeviceManagerService.addDevice();
-        System.out.println("Add Device finished");
+//        System.out.println("Starting sample...");
+//        SslUtils.ignoreSsl();
+//        System.out.println("Add Device started");
+//        DeviceManagerService.addDevice();
+//        System.out.println("Add Device finished");
         System.out.println("Get Device started");
         DeviceManagerService.getDevice();
-        System.out.println("Get Device finished");
+//        System.out.println("Get Device finished");
 //        System.out.println("Update Device started");
 //        DeviceManagerService.updateDevice();
 //        System.out.println("Update Device finished");

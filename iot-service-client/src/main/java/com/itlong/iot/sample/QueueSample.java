@@ -30,6 +30,10 @@ public class QueueSample {
      * <desc>
      *     创建队列
      * </desc>
+     *
+     * @author Jiaqi.X
+     * @version 1.0
+     * @createDate 2017/9/4
      */
     public static void createQueue(){
         Configuration config =
@@ -62,6 +66,10 @@ public class QueueSample {
      * <desc>
      *     从队列终结点读取消息
      * </desc>
+     *
+     * @author Jiaqi.X
+     * @version 1.0
+     * @createDate 2017/9/4
      */
     public static void receiveQueue(){
         try
