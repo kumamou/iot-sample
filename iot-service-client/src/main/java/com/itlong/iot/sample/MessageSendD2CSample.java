@@ -42,6 +42,7 @@ public class MessageSendD2CSample {
         ExecutorService executor = Executors.newFixedThreadPool(1);
         executor.execute(sender);
 
+
         System.out.println("Press ENTER to exit.");
         System.in.read();
         executor.shutdownNow();
