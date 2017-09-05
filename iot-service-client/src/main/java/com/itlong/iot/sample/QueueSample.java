@@ -49,13 +49,11 @@ public class QueueSample {
         //设置队列名
         QueueInfo queueInfo = new QueueInfo("testqueque");
         queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
-        try
-        {
+        try {
             CreateQueueResult result = service.createQueue(queueInfo);
             System.out.println(new Gson().toJson(result));
         }
-        catch (ServiceException e)
-        {
+        catch (ServiceException e) {
             System.out.print("ServiceException encountered: ");
             System.out.println(e.getMessage());
             System.exit(-1);
@@ -74,13 +72,12 @@ public class QueueSample {
     public static void receiveQueue(){
         try
         {
-            Configuration config =
-                    ServiceBusConfiguration.configureWithSASAuthentication(
-                            namespace,
-                            sasKeyName,
-                            sasKey,
-                            sasUrl
-                    );
+            Configuration config = ServiceBusConfiguration.configureWithSASAuthentication(
+                                    namespace,
+                                    sasKeyName,
+                                    sasKey,
+                                    sasUrl
+                            );
             ServiceBusContract service = ServiceBusService.create(config);
             ReceiveMessageOptions opts = ReceiveMessageOptions.DEFAULT;
             opts.setReceiveMode(ReceiveMode.PEEK_LOCK);
@@ -88,16 +85,14 @@ public class QueueSample {
                 ReceiveQueueMessageResult resultQM =
                         service.receiveQueueMessage("testqueque", opts);
                 BrokeredMessage message = resultQM.getValue();
-                if (message != null && message.getMessageId() != null)
-                {
+                if (message != null && message.getMessageId() != null) {
                     System.out.println("MessageID: " + message.getMessageId());
                     // Display the queue message.
                     System.out.print("From queue: ");
                     byte[] b = new byte[200];
                     String s = null;
                     int numRead = message.getBody().read(b);
-                    while (-1 != numRead)
-                    {
+                    while (-1 != numRead) {
                         s = new String(b);
                         s = s.trim();
                         System.out.print(s);
@@ -110,8 +105,7 @@ public class QueueSample {
                     System.out.println("Deleting this message.");
                     service.deleteMessage(message);
                 }
-                else
-                {
+                else {
                     System.out.println("Finishing up - no more messages.");
                     break;
                     // Added to handle no more messages.
